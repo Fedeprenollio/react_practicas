@@ -5,8 +5,8 @@ import { FollowMouse } from './components/FollowMouse'
 
 function App () {
   const [enabled, setEnabled] = useState(false)
-  console.log(enabled)
   const [position, setPosition] = useState({ X: 0, Y: 0 })
+
   useEffect(() => {
     const hadleMove = (e) => {
       const { clientX, clientY } = e
@@ -18,6 +18,15 @@ function App () {
     }
     return () => {
       window.removeEventListener('pointermove', hadleMove)
+    }
+  }, [enabled])
+
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+
+    return () => {
+      // document.body.classList.remove('no-cursor')
+      document.body.classList.toggle('no-cursor', enabled)
     }
   }, [enabled])
 
