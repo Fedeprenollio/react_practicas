@@ -22,7 +22,7 @@ export const FollowMouse = ({ position, setEnabled, enabled }) => {
       <div className='App'>
         Mouse Follower
       </div>
-      <button onClick={() => setEnabled(!enabled)}>`{enabled ? 'Desactivar' : 'Activar'} seguimiento de puntero`</button>
+      <button onClick={() => setEnabled(!enabled)}>{enabled ? 'Desactivar' : 'Activar'} seguimiento de puntero</button>
     </>
   )
 }
