@@ -40,10 +40,13 @@ main img{
     padding: 0;
     margin: 0;
     list-style: none;
+  
 }
 
 .movie {
     text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.164);
+    border-radius: 10px;
 }
 
 .movie h3, .movie p {
