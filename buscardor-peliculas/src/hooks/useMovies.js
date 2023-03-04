@@ -11,6 +11,7 @@ const useMovies = ({ search, sort, sortYear }) => {
 
   const getMovies = useCallback(async ({ search }) => {
     if (prevSearchRef.current === search) return
+
     try {
       setLoading(true)
       setErrorSearch(null)

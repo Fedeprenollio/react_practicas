@@ -43,6 +43,7 @@ function App () {
   }
 
   const debounceGetMovies = useCallback(
+
     debounce(search => {
       getMovies({ search })
     }, 500),
@@ -51,6 +52,7 @@ function App () {
   const handleChange = (e) => {
     const newQuery = e.target.value
     setSearch(newQuery)
+    if (newQuery.length < 3) return
     debounceGetMovies(newQuery)
     // getMovies({ search: newQuery })
   }

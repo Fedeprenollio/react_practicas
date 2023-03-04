@@ -6,11 +6,12 @@ export function useSearch () {
   const isFirstInput = useRef(true)
 
   useEffect(() => {
-    // if (search.startsWith('  ')) {
-    //   setSearch(search.slice(1))
-    //   // setError('No puede comenzar con un espacio')
-    //   return
-    // }
+    if (search[0] === ' ') {
+      setSearch('')
+      return
+      // setSearch(search.slice(1))
+      // setError('No puede comenzar con un espacio')
+    }
     if (isFirstInput.current) {
       isFirstInput.current = search === ''
       return
@@ -20,7 +21,7 @@ export function useSearch () {
       return
     }
     if (search.length < 3) {
-      setError('Debes color al menos tres caracteres')
+      setError('Debes colocar al menos tres caracteres')
       return
     }
     setError(null)
