@@ -27,6 +27,9 @@ main{
     align-items: center;
     width: 100%;
 }
+main img{
+    border-radius: 10px;
+}
 
 
 .movies{
@@ -45,4 +48,9 @@ main{
 
 .movie h3, .movie p {
     margin: 0
+}
+
+.radios{
+    display: flex;
+    
 }
