@@ -1,0 +1,76 @@
+{
+    "Search": [
+    {
+    "Title": "Casablanca",
+    "Year": "1942",
+    "imdbID": "tt0034583",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg"
+    },
+    {
+    "Title": "A Night in Casablanca",
+    "Year": "1946",
+    "imdbID": "tt0038777",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYTYwMDA1ZWEtMGVjOC00ZjQyLTllOGItM2IwYzNkYzFlYzliXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_SX300.jpg"
+    },
+    {
+    "Title": "Casablanca Express",
+    "Year": "1989",
+    "imdbID": "tt0094843",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BZjg2ZjAxMTEtZjdlZC00MzYwLTlkZjYtMjdjMzEzNGI4ZDY2XkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg"
+    },
+    {
+    "Title": "Casablanca Driver",
+    "Year": "2004",
+    "imdbID": "tt0381077",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTg4YWI0NGUtNjI0MC00MTYzLTk0YTQtZDAzNjMwNTRhZDMxXkEyXkFqcGdeQXVyNzQ5MzY0NjM@._V1_SX300.jpg"
+    },
+    {
+    "Title": "Casablanca Beats",
+    "Year": "2021",
+    "imdbID": "tt14773800",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BZDJjZGI3ZjYtNGVjNi00YTQzLTk4YTQtNWE2OGM0OWIyMzNlXkEyXkFqcGdeQXVyMjI3NDAyNg@@._V1_SX300.jpg"
+    },
+    {
+    "Title": "You Must Remember This: A Tribute to 'Casablanca'",
+    "Year": "1992",
+    "imdbID": "tt0280526",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTI3Mjc4NzczMF5BMl5BanBnXkFtZTcwNjM2ODQyMQ@@._V1_SX300.jpg"
+    },
+    {
+    "Title": "The Circus Casablanca",
+    "Year": "1981",
+    "imdbID": "tt0080538",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BZmRjYzkxOWMtMzgxYy00MjdiLWE4ZDgtODA2MWNlMDI3OTIyXkEyXkFqcGdeQXVyMzU0NzkwMDg@._V1_SX300.jpg"
+    },
+    {
+    "Title": "Casablanca, Casablanca",
+    "Year": "1985",
+    "imdbID": "tt0090801",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYWFhMTZiMzQtNzU4MS00NDBmLTkzYTMtZjMzYWFiZTA3OTMwXkEyXkFqcGdeQXVyMzU0NzkwMDg@._V1_SX300.jpg"
+    },
+    {
+    "Title": "Casablanca",
+    "Year": "1983",
+    "imdbID": "tt0084994",
+    "Type": "series",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BODg2MjQ4NTYxNl5BMl5BanBnXkFtZTcwMDkxMzA3Nw@@._V1_SX300.jpg"
+    },
+    {
+    "Title": "Opération Casablanca",
+    "Year": "2010",
+    "imdbID": "tt1327808",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BY2ZhNGJjMDYtOWRkYS00NDc1LWIzYTMtNGNhYjg3NDhkYjgxXkEyXkFqcGdeQXVyMTEwNDE0MjY@._V1_SX300.jpg"
+    }
+    ],
+    "totalResults": "61",
+    "Response": "True"
+    }
