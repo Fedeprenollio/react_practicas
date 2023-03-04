@@ -4,6 +4,7 @@ import { Movies } from './components/Movies'
 import useMovies from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 import debounce from 'just-debounce-it'
+import { ButtonRadio } from './components/ButtonRadio'
 
 function App () {
   const [sort, setSort] = useState(false)
@@ -53,43 +54,22 @@ function App () {
     debounceGetMovies(newQuery)
     // getMovies({ search: newQuery })
   }
-  const handleSort = () => {
-    setSort(!sort)
-    setSortYear(false)
-  }
-  const handleSortYear = () => {
-    setSortYear(!sortYear)
-    setSort(false)
-  }
-  const handleSortDefault = () => {
-    setSortYear(false)
-    setSort(false)
-  }
 
   return (
     <div className='page'>
       <header>
         <h1>Buscador de peliculas</h1>
         <form className='form' onSubmit={handleSubmit}>
-
           <div>
-
             <input onChange={handleChange} value={search} name='title' ref={inputRef} type='search' placeholder='Avenger, Terminator, The Matrix...' />
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {errorSearch && <p style={{ color: 'red' }}>{errorSearch}</p>}
           </div>
-          <input name='sort' type='radio' onChange={handleSort} value={sort} />
-          <label>Nombre</label>
-          <input name='sort' type='radio' onChange={handleSortYear} value={sortYear} />
-          <label>Año</label>
-          <input name='sort' type='radio' onChange={handleSortDefault} value={sortYear} />
-          <label>Default</label>
           <button type='submit'>Buscar</button>
-
         </form>
+        <ButtonRadio movies={movies} setSort={setSort} setSortYear={setSortYear} sort={sort} sortYear={sortYear} />
       </header>
       <main>
-
         {!loading ? <Movies movies={movies} /> : 'Cargando...'}
       </main>
     </div>
