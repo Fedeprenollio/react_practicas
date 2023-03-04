@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ListOfMovies = ({ movies }) => {
+  const IMG_NOT_FOUND = 'https://ih1.redbubble.net/image.1861329650.2941/fposter,small,wall_texture,product,750x1000.jpg'
   return (
     <ul className='movies'>
       {movies?.map(({ title, id, year, poster, type }) => {
@@ -9,7 +10,7 @@ const ListOfMovies = ({ movies }) => {
             <h3>{title}</h3>
             <span>{type}</span>
             <h4>{year}</h4>
-            <img src={poster} alt={`Imagen de ${title}`} />
+            <img src={poster === 'N/A' ? IMG_NOT_FOUND : poster} alt={`Imagen de ${title}`} />
           </li>
         )
       })}
