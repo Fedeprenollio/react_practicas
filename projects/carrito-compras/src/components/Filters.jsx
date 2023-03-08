@@ -1,8 +1,10 @@
 import React, { useId } from 'react'
+import { useCategories } from '../hooks/useCategories'
 import { useFilter } from '../hooks/useFilter'
 import './Filters.css'
 export const Filters = () => {
   const { filters, setFilters } = useFilter()
+  const { allCategories } = useCategories()
   // NO USAR DOS FUENTES DE LA VERDAD!!! const [minPrice, setMinPrice] = useState(0)
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
@@ -36,8 +38,12 @@ export const Filters = () => {
         <label htmlFor={categoryFilterId}>Categoria</label>
         <select name='category' id={categoryFilterId} onChange={handleChangeCategory}>
           <option value='all'>Todas</option>
-          <option value='laptops'>Notebooks</option>
-          <option value='smartphones'>Celulares</option>
+          {allCategories.map(category => {
+            return (
+              <option key={category} value={category}>{category}</option>
+            )
+          })}
+
         </select>
       </div>
     </section>
