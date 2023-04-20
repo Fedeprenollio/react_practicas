@@ -1,26 +1,28 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import { Movies } from './components/Movies'
 import useMovies from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 import debounce from 'just-debounce-it'
 import { ButtonRadio } from './components/ButtonRadio'
+import { useObserver } from './hooks/useObserver'
+import { useScrollToTop } from './hooks/useScrollToTop'
 
 function App () {
+  useScrollToTop()
   const [sort, setSort] = useState(false)
   const [sortYear, setSortYear] = useState(false)
-
+  const { page, elementRef } = useObserver({ distance: '10px' })
   // para el form no controlado usamos el useRef()
   const inputRef = useRef('')
   // ----- para el form controlado:
 
   const { search, setSearch, error } = useSearch()
-  const { movies, getMovies, loading, errorSearch } = useMovies({ search, sort, sortYear })
+  const { movies, getMovies, loading, errorSearch } = useMovies({ search, sort, sortYear, page })
   // ------
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     // DE FORMA NO CONTROLADA PUEDE SER CON EL USEREF O DE FORMA NATIVA
     // const text = inputRef.current.value
     // console.log(text)
@@ -74,6 +76,7 @@ function App () {
       <main>
         {!loading ? <Movies movies={movies} /> : 'Cargando...'}
       </main>
+      <div className='lazzy' ref={elementRef} />
     </div>
   )
 }

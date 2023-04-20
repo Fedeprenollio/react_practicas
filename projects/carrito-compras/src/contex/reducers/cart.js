@@ -28,7 +28,7 @@ export const cartReducer = (state, action) => {
         })
         updateLocalStorage(newState)
         return newState
-      }
+      } 
 
       const newState = [...state, {
         ...action.payload,

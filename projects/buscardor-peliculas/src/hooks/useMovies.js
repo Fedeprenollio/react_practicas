@@ -1,9 +1,10 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
-import { searchMovies } from '../services/movies'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { discoveryMovies, searchMovies } from '../services/movies'
+import { useObserver } from './useObserver'
 // import whitResoult from '../data/info.json'
 // import noData from '../data/no-data.json'
 
-const useMovies = ({ search, sort, sortYear }) => {
+const useMovies = ({ search, sort, sortYear, page }) => {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorSearch, setErrorSearch] = useState(null)
@@ -11,11 +12,10 @@ const useMovies = ({ search, sort, sortYear }) => {
 
   const getMovies = useCallback(async ({ search }) => {
     if (prevSearchRef.current === search) return
-
+    if (search === '') return
     try {
       setLoading(true)
       setErrorSearch(null)
-      prevSearchRef.current = search
       const newMovies = await searchMovies({ search })
 
       setMovies(newMovies)
@@ -25,6 +25,14 @@ const useMovies = ({ search, sort, sortYear }) => {
       setLoading(false)
     }
   }, [])
+
+  useEffect(() => {
+    if (!search || search === '') {
+      discoveryMovies(page).then(res => {
+        setMovies(prevMovies => prevMovies.concat(res))
+      })
+    }
+  }, [search, page])
 
   // const getSortedMovies = () => {
   //   console.log("RENDER FUNCION NORAML")

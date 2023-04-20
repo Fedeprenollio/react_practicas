@@ -10,3 +10,4 @@ export function useCategories () {
   }, [])
   return { allCategories }
 }
+        
