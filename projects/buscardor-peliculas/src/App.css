@@ -5,6 +5,7 @@
     align-items: center;
     width: 100%;
     max-width: 800px;
+    min-height: 120vh;
 }
 
 header{
@@ -26,6 +27,7 @@ main{
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-height: 120vh;
 }
 main img{
     border-radius: 10px;
