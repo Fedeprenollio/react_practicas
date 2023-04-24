@@ -31,6 +31,7 @@ main{
 }
 main img{
     border-radius: 10px;
+    min-height: 342px;
 }
 
 

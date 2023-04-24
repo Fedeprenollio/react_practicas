@@ -8,10 +8,10 @@ const ListOfMovies = ({ movies }) => {
       {movies?.map(({ title, id, year, poster, type }) => {
         return (
           <li className='movie' key={id || title}>
+            <img src={poster === 'N/A' ? IMG_NOT_FOUND : poster} alt={`Imagen de ${title}`} />
             <h3>{title}</h3>
             <span>{type}</span>
             <h4>{year}</h4>
-            <img src={poster === 'N/A' ? IMG_NOT_FOUND : poster} alt={`Imagen de ${title}`} />
           </li>
         )
       })}
