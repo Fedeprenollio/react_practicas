@@ -21,7 +21,7 @@ export const UsersList = ({ changeSorting, handleDeleteUser, users, showColors }
           return (
             <tr key={user.email} style={{ backgroundColor: color }}>
               <td>
-                <img src={user.picture.thumbnail} alt={`Imagen de ${user.name.last}`} />
+                <img src={user?.picture.thumbnail} alt={`Imagen de ${user.name.last}`} />
               </td>
               <td>{user.name.first}</td>
               <td>{user.name.last}</td>

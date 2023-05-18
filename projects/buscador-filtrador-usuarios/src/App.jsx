@@ -2,6 +2,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 import { UsersList } from './components/UsersList'
+import { useUsers } from './hooks/useUsers'
+import { Results } from './components/Results'
 
 export const SortBy = {
   NONE: 'none',
@@ -12,25 +14,43 @@ export const SortBy = {
 }
 
 function App () {
-  const [users, setUsers] = useState([])
+  const { loading, error, users, refetch, fetchNextPage, hasNextPage } = useUsers()
+
+  // ESTO LO EVITO AL USAR REAC QUERIES
+  // const [error, setError] = useState(false)
+  // const [loading, setLoading] = useState(false)
+  // const [users, setUsers] = useState([])
   const [showColors, setShowColors] = useState(false)
   const [sorting, setSorting] = useState(SortBy.NONE)
   const [filterCountry, setFilterCountry] = useState(null)
-  const originalUsers = useRef([])
-  useEffect(() => {
-    fetch('https://randomuser.me/api/?results=100')
-      .then(res => res.json())
-      .then(data => {
-        setUsers(data.results)
-        originalUsers.current = data.results
-      })
-      .catch(error => console.error(error))
-  }, [])
+  // const originalUsers = useRef([])
+  const [currentePage, setCurrentePage] = useState(1)
+
+  // CON QUERY REACT YA NO NECESITO EL USE EFECT
+  // useEffect(() => {
+  //   setLoading(true)
+  //   setError(false)
+
+  //   fetchUsers(currentePage)
+  //     .then(users => {
+  //       setUsers(prevState => {
+  //         const newUsers = prevState.concat(users)
+  //         originalUsers.current = newUsers
+  //         return newUsers
+  //       })
+  //     })
+  //     .catch(error => {
+  //       setError(error)
+  //       console.error(error)
+  //     })
+  //     .finally(() => {
+  //       setLoading(false)
+  //     })
+  // }, [currentePage])
 
   const handleChangeSort = (sort) => {
     setSorting(sort)
   }
-
   const toogleColors = () => {
     setShowColors(!showColors)
   }
@@ -41,11 +61,12 @@ function App () {
   }
 
   const handleDeleteUser = (uuid) => {
-    const newList = users.filter(user => user.login.uuid !== uuid)
-    setUsers(newList)
+    // const newList = users.filter(user => user.login.uuid !== uuid)
+    // setUsers(newList)
   }
-  const handleReset = () => {
-    setUsers(originalUsers.current)
+  const handleReset = async () => {
+    // setUsers(originalUsers.current)
+    await refetch()
   }
 
   const handleFilterCountries = (e) => {
@@ -107,10 +128,10 @@ function App () {
       })
     }
   }, [filteredUsers, sorting])
-
   return (
     <>
       <h1>Buscador de usuarios</h1>
+      <Results />
       <header>
         <button onClick={toogleColors}>Colorear filas</button>
         <button onClick={toogleSortByCountry}>{sorting === SortBy.COUNTRY ? 'No ordenar por pais' : 'Ordenar por pais'}</button>
@@ -118,7 +139,16 @@ function App () {
         <input placeholder='Escribe un pais' onChange={handleFilterCountries} type='search' />
       </header>
       <main>
-        <UsersList changeSorting={handleChangeSort} handleDeleteUser={handleDeleteUser} showColors={showColors} users={sortedUsers} />
+        {users?.length > 0 &&
+          <UsersList changeSorting={handleChangeSort} handleDeleteUser={handleDeleteUser} showColors={showColors} users={sortedUsers} />}
+        {loading && <p>Cargando...</p>}
+        {error && <p>Error en la carga.  </p>}
+        {!loading && !error && users.length === 0 && <p> No hay usuarios por mostrar</p>}
+
+        {!loading && !error && users.length > 0 && hasNextPage &&
+          <button onClick={() => fetchNextPage()}>Cargar mas usuarios</button>}
+        {/* <button onClick={() => setCurrentePage(prevState => prevState + 1)}>Cargar mas usuarios</button>} */}
+
       </main>
     </>
   )
